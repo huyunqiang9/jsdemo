@@ -43,6 +43,9 @@
 <input id="registerBackListener" type="button" value="注册其他页面回来监听">
 <input id="clearBackListener" type="button" value="清空注册其他页面回来监听">
 <input id="callPhone" type="button" value="拨打电话弹窗">
+<input id="getConnectedInfo" type="button" value="获取WIFI信息">
+<input id="realName" type="button" value="进行实名认证">
+<input id="wxauth" type="button" value="微信授权">
 <a href="lyf://h5?body={'url':'http://www.laiyifen.com'}"> test下级页面</a>
 
 <hr/>
@@ -382,6 +385,30 @@
     }
 
 
+    document.getElementById('getConnectedInfo').onclick= function () {
+        var getLyfCode = {
+            "function": "getConnectedInfo",
+            "callback": "callresult"
+        }
+        appMessage(getLyfCode);
+    }
+
+
+    document.getElementById('realName').onclick= function () {
+        var getLyfCode = {
+            "function": "setRealName",
+            "callback": "callresult"
+        }
+        appMessage(getLyfCode);
+    }
+
+    document.getElementById('wxauth').onclick= function () {
+        var getLyfCode = {
+            "function": "getWechatAuthInfo",
+            "callback": "callresult"
+        }
+        appMessage(getLyfCode);
+    }
 
 
 
@@ -455,6 +482,15 @@
             window.webkit.messageHandlers.mobileAPI.postMessage(obj);
         }
     };
+
+    
+
+
+
+
+
+
+
 
     var hm = document.createElement("script");
     hm.src = "https://hm.baidu.com/hm.js?0c20bbce3f1bd24d17d0d46e432a39fa";
